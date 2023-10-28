@@ -46,7 +46,7 @@ export function getMoneyOriginalValue(amount) {
     if (amount == undefined)
         amount = 0;
 
-    console.error(`usdRate : ${usdRate},bigBlind : ${bigBlind},amount : ${amount},showAsBBCheckbox : ${showAsBBCheckbox.checked},showAsSUDCheckbox : ${showAsSUDCheckbox.checked}`);
+    // console.error(`usdRate : ${usdRate},bigBlind : ${bigBlind},amount : ${amount},showAsBBCheckbox : ${showAsBBCheckbox.checked},showAsSUDCheckbox : ${showAsSUDCheckbox.checked}`);
     if (showcurrency == "BB") {
         return Math.floor(amount * bigBlind * 100) / 100;
     } else if (showcurrency == "USD") {

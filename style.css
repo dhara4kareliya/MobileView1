@@ -2004,3 +2004,215 @@ input {
   opacity: 0.75;
   border-radius: 3px;
 }
+/* --------------- insuranceModal ------------------------*/
+
+.second-top {
+    width: 373px!important;
+    height: 598px!important;
+    border-radius: 9.66px!important;
+    background: linear-gradient(89.26deg, #181B3A 22.72%, #262A4E 52.04%, #181B3A 81.87%), linear-gradient(0deg, #D6CC18, #D6CC18);
+    border: 6px solid #D6CC18
+}
+
+.Second-mod {
+    transition: transform .3s ease-out!important;
+    transform: translate(84px, -20px)!important;
+}
+
+.main-header {
+    border-radius: 10px;
+    width: calc( 23.5 * var(--aspect-ratio));
+    height: calc( 14 * var(--aspect-ratio));
+    background: #0000001A;
+}
+
+.border-around {
+    width: 325px;
+    height: 128px;
+    justify-content: center!important;
+    flex-direction: column!important;
+    align-items: center!important;
+    display: flex!important;
+}
+
+.border-p {
+    width: 417px;
+    height: 58px;
+    font-family: Yeseva One;
+    font-size: 50px;
+    font-weight: 400;
+    line-height: 58px;
+    letter-spacing: 0em;
+    text-align: center;
+    background: linear-gradient(180deg, #D8B2B2 0%, #FFFFFF 100%);
+    background-clip: text;
+    /* Apply background to the text only */
+    -webkit-background-clip: text;
+    /* For Safari */
+    color: transparent;
+}
+
+.border-p-text {
+    width: 176px;
+    height: 58px;
+    font-family: Yeseva One;
+    font-size: 50px;
+    font-weight: 400;
+    line-height: 58px;
+    letter-spacing: 0em;
+    text-align: center;
+    background: linear-gradient(180deg, #FFB800 0%, #FFB800 52.6%, #FFFFFF 100%);
+    background-clip: text;
+    /* Apply background to the text only */
+    -webkit-background-clip: text;
+    /* For Safari */
+    color: transparent;
+}
+
+.card-prents {
+    width: 644.1px;
+    height: 186.15px;
+    position: relative;
+}
+
+.img_1 {
+    position: absolute;
+    left: 42px;
+}
+
+.img_2 {
+    position: absolute;
+    left: 26px;
+}
+
+.img_3 {
+    position: absolute;
+    left: 47px;
+}
+
+.img_4 {
+    position: absolute;
+    left: 70px;
+}
+
+.img_5 {
+    position: absolute;
+    left: 91px;
+}
+
+.img_6 {
+    position: absolute;
+    left: 114px;
+}
+
+.img_7 {
+    position: absolute;
+    left: 136px;
+}
+
+.img_8 {
+    position: absolute;
+    left: 161px;
+}
+
+.img_9 {
+    position: absolute;
+    left: 185px;
+}
+
+.img_10 {
+    position: absolute;
+    left: 208px;
+}
+
+.img_11 {
+    position: absolute;
+    left: 208px;
+}
+
+.img_12 {
+    position: absolute;
+    left: 0px;
+}
+
+.img_14 {
+    position: absolute;
+    left: 522px;
+}
+
+.img_17 {
+    position: absolute;
+    left: 208px;
+}
+
+.doller_prents {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.doller_p {
+    width: 365px;
+    height: 44px;
+}
+
+.pay {
+    font-family: Yeseva One;
+    font-size: 38px;
+    font-weight: 400;
+    line-height: 44px;
+    letter-spacing: 0em;
+    text-align: center;
+    background: linear-gradient(0deg, #FFFFFF, #FFFFFF);
+    background-clip: text;
+    /* Apply background to the text only */
+    -webkit-background-clip: text;
+    /* For Safari */
+    color: transparent;
+}
+
+.sane {
+    font-family: Times New Roman;
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 44px;
+    letter-spacing: 0em;
+    text-align: center;
+    background: linear-gradient(180deg, #FFB800 0%, #FFB800 47.92%, #FFFFFF 93.75%), linear-gradient(180deg, #FFB800 0%, #FFB800 50%, #FFFFFF 95.31%);
+    background-clip: text;
+    /* Apply background to the text only */
+    -webkit-background-clip: text;
+    /* For Safari */
+    color: transparent;
+}
+
+.text_btn {
+    width: 157.53px;
+    height: 72.42px;
+    font-family: Sarala;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 49px;
+    letter-spacing: 0em;
+    color: #FFFFFF;
+    border-radius: 14px;
+    border: 0.5px solid #2D9240;
+    background: linear-gradient(180deg, #01B320 0%, #0E6F20 100%), linear-gradient(0deg, #2D9240, #2D9240);
+    box-shadow: 2px 0px 10px 0px #25883766;
+}
+
+.next {
+    width: 163.53px;
+    height: 72.42px;
+    border-radius: 14px;
+    background: linear-gradient(0deg, #3D3A3A, #3D3A3A), linear-gradient(180deg, #646363 0%, #3D3A3A 95.83%);
+    font-family: Sarala;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 49px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #FFFFFF;
+    border: 0.5px solid #3D3A3A;
+    box-shadow: 2px 0px 10px 0px #515151A8;
+}

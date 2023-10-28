@@ -1,4 +1,4 @@
-import { showCards, sitIn, sitOut, playerLeaveTable, sitOutNextHand, tableSettings, tableSubscribe, waitForBB, doChat } from "../services/table-server";
+import { showCards, sitIn, sitOut, playerLeaveTable, sitOutNextHand, tableSettings, tableSubscribe, waitForBB, doChat, acceptInsurance } from "../services/table-server";
 import { ShowTipToDealer, disConnectSocket, playerLeave, updatePlayerInfo } from "../socket-client";
 import { toggleCheckbox } from "./checkbox";
 import { getPlayerSeat, getCurrentTurn, turnAction, joinWaitingList } from '../services/table-server';
@@ -66,6 +66,10 @@ const dropdownMenus = $(".dropdown-menu");
 const chatButtons = $(".chatButtons1");
 const btnCloses = $(".btn-closes");
 const preChatMsgOrEmoji = $('.preChatEmoji,.preChatMsg');
+const insuranceYesButton = $(".insuranceYesButton")[0];
+const insuranceNextTime = $(".insuranceNextTime")[0];
+const insurancePrice = $(".insurancePrice")[0];
+const allInPrice = $(".allInPrice");
 
 export class MainUI {
     constructor(buyInUI) {
@@ -99,6 +103,8 @@ export class MainUI {
         this.optionActionAutoCheckOrFold = false;
         this.isTurn = false;
         this.isPlaying = false;
+        this.insuranceAmount = 0;
+        this.insuranceWinAmount = 0;
         // this.showAutoCheckOrFold = false;
         this.init();
     }
@@ -249,6 +255,15 @@ export class MainUI {
             })
         }
 
+        insuranceYesButton.addEventListener('click', () => {
+            acceptInsurance(this.insuranceAmount, this.insuranceWinAmount);
+            $('#insuranceModal').modal('hide');
+        });
+
+        insuranceNextTime.addEventListener('click', () => {
+            $('#insuranceModal').modal('hide');
+        });
+
 
         /* openMenuButton.addEventListener('click', () => {
              $(mobileSideBar).addClass("active");
@@ -289,6 +304,26 @@ export class MainUI {
           for (const button of multiTableButtons) {
               button.addEventListener('click', () => { window.open("https://nrpoker.net/frontUser/newhome", userToken); });
           }*/
+    }
+
+    showInsurance(data) {
+        console.log(data);
+        if (data.status == true) {
+            console.log(data);
+            this.insuranceAmount = data.data.insurancePrice;
+            this.insuranceWinAmount = data.data.allInPrice;
+
+            insurancePrice.innerHTML = data.data.insurancePrice;
+            for (const price of allInPrice)
+                price.innerHTML = data.data.allInPrice;
+
+            $('#insuranceModal').modal('show');
+        } else {
+            $('#insuranceModal').modal('hide');
+            this.insuranceAmount = 0;
+            this.insuranceWinAmount = 0;
+        }
+
     }
 
     showTipDealer(value) {

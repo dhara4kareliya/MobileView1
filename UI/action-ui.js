@@ -132,7 +132,7 @@ export class ActionUI {
     raise() {
         this.showActionUI(false);
         // turnAction("bet", this.m_Raise);
-        console.error(`betInput.value : ${betInput.value},getMoneyOriginalValue : ${getMoneyOriginalValue(parseFloat(betInput.value))},m_CurrentBet : ${this.m_CurrentBet} = ${getMoneyOriginalValue(parseFloat(betInput.value)) - this.m_CurrentBet}`);
+        // console.error(`betInput.value : ${betInput.value},getMoneyOriginalValue : ${getMoneyOriginalValue(parseFloat(betInput.value))},m_CurrentBet : ${this.m_CurrentBet} = ${getMoneyOriginalValue(parseFloat(betInput.value)) - this.m_CurrentBet}`);
         turnAction("bet", getMoneyOriginalValue(parseFloat(betInput.value)) - this.m_CurrentBet)
     }
 

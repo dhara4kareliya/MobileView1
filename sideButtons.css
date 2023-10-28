@@ -787,8 +787,8 @@ button:focus{
 
 #tip-button {
     position: absolute;
-    bottom: calc( 63 * var(--aspect-ratio));
-    right: calc( 55 * var(--aspect-ratio));
+    bottom: calc( 115 * var(--aspect-ratio));
+    right: calc( 48 * var(--aspect-ratio));
     text-align: center;
     vertical-align: bottom;
     visibility: hidden;
@@ -919,14 +919,15 @@ button:focus{
 }
 
 .Mod_Con3 {
-    width: calc(47*var(--aspect-ratio));
-    height: calc(65*var(--aspect-ratio));
+    width: calc(147*var(--aspect-ratio));
+    height: calc(176*var(--aspect-ratio));
     top: calc(9*var(--aspect-ratio));
     border-radius: calc(5*var(--aspect-ratio));
     padding-top: 0px !important;
     padding-bottom: 0px !important;
     border: 2px solid #EFA434;
     background: linear-gradient(90deg, #181B3A 0%, #262A4E 48.44%, #181B3A 100%);
+    margin: auto;
 }
 
 .But1 {
@@ -936,15 +937,14 @@ button:focus{
     opacity: 1 !important;
     background: transparent;
     margin: 0px !important;
-    font-size: calc(2*var(--aspect-ratio));
+    font-size: calc(9*var(--aspect-ratio));
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .Mod_body3 .img_div {
-    width: calc(45*var(--aspect-ratio));
-    height: calc(27*var(--aspect-ratio));
+    width: 100%;
     margin-top: -10px;
 }
 
@@ -957,12 +957,12 @@ button:focus{
 }
 
 .Mod_head3 button i {
-    margin: calc(0.2 * var(--aspect-ratio)) 0 !important;
+    margin: 0 0 calc(10.2 * var(--aspect-ratio)) 0 !important;
 }
 
 .cash_div {
     width: 100%;
-    height: 100px;
+    height: 50px;
     color: white;
 }
 
@@ -990,9 +990,10 @@ button:focus{
 }
 
 #GO {
-    width: calc(20.5*var(--aspect-ratio));
-    height: calc(4.8*var(--aspect-ratio));
+    width: calc(55.5*var(--aspect-ratio));
+    height: calc(19.8*var(--aspect-ratio));
     color: #ffffff;
+    margin-top: 15px;
     border-radius: 90px;
     border: none;
     Padding: 4px 8px 4px 8px;

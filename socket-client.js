@@ -39,6 +39,7 @@ function setSocketEventListeners() {
     socket.on("REQ_TABLE_CHAT", eventTrigger("onChat"));
     socket.on("connect", eventTrigger("onConnect"));
     socket.on("disconnect", eventTrigger("onDisconnect"));
+    socket.on("REQ_INSURANC", eventTrigger("onInsurance"));
 }
 
 // TS -> client
@@ -64,7 +65,8 @@ const eventListeners = {
     onLog: [],
     onChat: [],
     onConnect: [],
-    onDisconnect: []
+    onDisconnect: [],
+    onInsurance: [],
 };
 
 function triggerEventListeners(name, data) {

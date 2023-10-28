@@ -70,7 +70,9 @@ function setShowInUSD(value) {
     table.setShowInUSD(value);
 }
 
-
+function onInsurance(data) {
+    mainUI.showInsurance(data);
+}
 
 function onLeaveClick() {
     playerLeave();
@@ -407,6 +409,7 @@ tableSubscribe("onTourneyInfo", onTourneyInfo);
 tableSubscribe("onCashWaitList", onCashWaitList);
 tableSubscribe("onLog", onLog);
 tableSubscribe("onChat", onChat);
+tableSubscribe("onInsurance", onInsurance);
 
 export default {
     showBuyIn,

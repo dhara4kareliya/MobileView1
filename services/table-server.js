@@ -231,6 +231,10 @@ export function myTotalMoneyInGame() {
     return seat.money + (seat.pendingMoney ? seat.pendingMoney : 0);
 }
 
+export function acceptInsurance(insuranceAmount, insuranceWinAmount) {
+    emit("REQ_PLAYER_ACCEPT_INSURANCE", { insuranceAmount: insuranceAmount, insuranceWinAmount: insuranceWinAmount });
+}
+
 function onPlayerLeave(reason) {
     playerState = PlayerState.None;
     playerSeat = -1;
@@ -276,6 +280,9 @@ function onTableStatus(status) {
 
 function onTableSidePots(res) {
     triggerEventListeners("onSidePots", res);
+}
+function onInsurance(res) {
+    triggerEventListeners("onInsurance", res);
 }
 
 function onTableTurn(res) {
@@ -419,6 +426,7 @@ subscribe("onTablePlayerShowCardsButton", onTablePlayerShowCardsButton);
 subscribe("onTablePlayerFoldAnyBet", onTablePlayerFoldAnyBet);
 subscribe("onBuyInOpen", onBuyInOpen);
 
+subscribe("onInsurance", onInsurance);
 subscribe("onMessage", onMessage);
 subscribe("onAnimation", onAnimation);
 subscribe("onTourneyInfo", onTourneyInfo);
