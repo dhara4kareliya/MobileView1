@@ -3,6 +3,7 @@ import { getMoneyValue, getMoneyText } from "./money-display";
 import { Card, getCardImageFilePath } from "./card-ui";
 import { userMode } from '../services/game-server';
 import { Sound } from './audio';
+import { ShowTipToDealer } from "../socket-client";
 
 const sound = new Sound();
 const actionColors = {
@@ -173,6 +174,23 @@ export class Player {
 
     setPlayState(isPlaying) {
         this.isPlaying = isPlaying;
+    }
+
+    setTip(player){
+        if(player){
+            const TipsOptions = $("#tip-button button");
+            const tipButtonDiv = $("#tip-button")[0]
+            tipButtonDiv.style.visibility = "visible";
+            for (const button of TipsOptions) {
+                button.addEventListener('click', () => {
+                    const TipAmount = button.attributes['value'].value;
+                    // this.setActive(tipButtonDiv, false);
+                    ShowTipToDealer(TipAmount, () => {
+                        $('#TipToDealer').modal('show');
+                    });
+                },{once:true})
+            }
+        }
     }
 
     setShowInBB(isShowInBB) {

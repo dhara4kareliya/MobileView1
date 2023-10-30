@@ -243,6 +243,10 @@ export function updatePlayerInfo(callback) {
     });
 }
 
+export function autoFold(value, callback) {
+    socket.emit("REQ_AUTO_FOLD", { value: value }, callback);
+}
+
 export function playerLeaveGame() {
     socket.emit("REQ_PLAYER_LEAVEGAME");
 }

@@ -1,4 +1,4 @@
-import { playerLeave } from "../socket-client";
+import { autoFold, playerLeave } from "../socket-client";
 import { modes, Table } from "./table-ui";
 import { getPlayerSeat, myTotalMoneyInGame } from '../services/table-server';
 import { tableSubscribe } from '../services/table-server';
@@ -37,6 +37,23 @@ showSUDCheckbox.addEventListener('change', () => {
         toggleCheckbox(showBBCheckbox, false);
 
     setShowInUSD(showSUDCheckbox.checked);
+});
+
+const autoFoldModeButtonCheckboxes = $(".autoFoldModeButton1 .checkbox")[0];
+autoFoldModeButtonCheckboxes.addEventListener('click', () => {
+    if (autoFoldModeButtonCheckboxes.checked && tableSettings.gameType == "nlh") {
+        autoFold(autoFoldModeButtonCheckboxes.checked, (data) => {
+            data = JSON.parse(data);
+            if (data.status == true) {
+                mainUI.setPlayerAutoFoldCards(data.AutoFoldCards);
+                const playerCards = table.getTurnPlayerCards(getPlayerSeat());
+                const activeSeats = table.getActiveSeats();
+                mainUI.doAutoFold(autoFoldModeButtonCheckboxes, playerCards, activeSeats);
+                return true;
+            }
+        });
+    }
+    mainUI.setPlayerAutoFoldCards([]);
 });
 
 
@@ -142,7 +159,8 @@ function onPlayerState(state) {
     if (tableSettings.mode == "cash") {
 
         mainUI.showWaitForBB(state == "Waiting");
-        mainUI.setWaitForBB(true);
+        // mainUI.setWaitForBB(true);
+        mainUI.showAutoFold(true);
         mainUI.showSitOutNextHand(state == "Playing");
         mainUI.setSitOutNextHand(false);
 
@@ -156,7 +174,7 @@ function onPlayerState(state) {
         // tableUi.setShowDollarSign(true);
     } else {
         mainUI.showWaitForBB(false);
-        mainUI.setWaitForBB(false);
+        // mainUI.setWaitForBB(false);
         mainUI.showSitOutNextHand(false);
         mainUI.setSitOutNextHand(false);
         //     actionUi.setShowDollarSign(false);
@@ -317,6 +335,9 @@ function onRoundTurn(turn) {
     lastTurnSeat = turn.seat;
 
     if (turn.seat != -1 && turn.seat == getPlayerSeat()) {
+        const playerCards = table.getTurnPlayerCards(turn.seat);
+        const activeSeats = table.getActiveSeats();
+
         if (mainUI.doFoldToAnyBet())
             return;
 
@@ -324,6 +345,9 @@ function onRoundTurn(turn) {
             return;
 
         if (mainUI.doAutoCheck())
+            return;
+
+        if (tableSettings.gameType == "nlh" && mainUI.doAutoFold(autoFoldModeButtonCheckboxes, playerCards, activeSeats))
             return;
 
         actionUI.showActionUI(true);
@@ -351,7 +375,6 @@ function onSidePots(pots) {
 
 function onShowCards(showCards) {
     // if (showCards.seat != getPlayerSeat()) // show others only
-    console.log('called');
     table.showCards(showCards.seat, showCards.cards);
     mainUI.addLog(table.players[showCards.seat].name + ' shows ' + showCards.cards.join())
 }

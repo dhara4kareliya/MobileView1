@@ -1,10 +1,11 @@
-import { showCards, sitIn, sitOut, playerLeaveTable, sitOutNextHand, tableSettings, tableSubscribe, waitForBB, doChat, acceptInsurance } from "../services/table-server";
+import { showCards, sitIn, sitOut, playerLeaveTable, sitOutNextHand, tableSettings, tableSubscribe, waitForBB, doChat, acceptInsurance, round } from "../services/table-server";
 import { ShowTipToDealer, disConnectSocket, playerLeave, updatePlayerInfo } from "../socket-client";
 import { toggleCheckbox } from "./checkbox";
 import { getPlayerSeat, getCurrentTurn, turnAction, joinWaitingList } from '../services/table-server';
 import { showBuyIn } from './game-ui';
 import { userMode, userToken } from '../services/game-server';
 import { getMoneyText } from "./money-display";
+import { getPlayerCardHandGroup } from "./card-ui";
 
 const tableSettingSpanDiv = $(".tableSettingsSpan")[0];
 const tableNameDiv = $(".tableName")[0];
@@ -54,7 +55,7 @@ const waitListDropdown = $("#usersDropdown")[0];
 const waitListArrow = $("#arrow")[0]
 const logDiv = $('.log_data1')[0];
 const addTipsButtons = $(".addTipsButton")[0];
-const TipsOptions = $("#tip-button button");
+// const TipsOptions = $("#tip-button button");
 const tipButtonDiv = $("#tip-button")[0]
 const chatDiv = $('#divmessage1 .userMessage')[0];
 const chatInput = $('.chatButton2 .input_div1 input')[0];
@@ -69,7 +70,8 @@ const preChatMsgOrEmoji = $('.preChatEmoji,.preChatMsg');
 const insuranceYesButton = $(".insuranceYesButton")[0];
 const insuranceNextTime = $(".insuranceNextTime")[0];
 const insurancePrice = $(".insurancePrice")[0];
-const allInPrice = $(".allInPrice");
+const allInPrice = $(".allInPrice1");
+const autoFoldModeButtonDiv = $(".autoFoldModeButton1")[0];
 
 export class MainUI {
     constructor(buyInUI) {
@@ -105,6 +107,7 @@ export class MainUI {
         this.isPlaying = false;
         this.insuranceAmount = 0;
         this.insuranceWinAmount = 0;
+        this.playerAutoFoldCards = [];
         // this.showAutoCheckOrFold = false;
         this.init();
     }
@@ -124,7 +127,8 @@ export class MainUI {
         this.setActive(uiTables, false);
         this.setActive(settingsMenu, false);
         this.setActive(waitListDropdown, false);
-        this.setActive(addTipsButtons, false);
+        // this.setActive(addTipsButtons, false);
+        this.setActive(autoFoldModeButtonDiv, false);
 
         sitInBtn.addEventListener('click', () => {
             this.onSitInClick();
@@ -243,17 +247,17 @@ export class MainUI {
             this.onOptionActionAutoCheckOrFold(autoCheckOrFoldCheckbox.checked);
         });
         addTipsButtons.addEventListener('click', () => {
-            this.setActive(tipButtonDiv, true);
+            // this.setActive(tipButtonDiv, true);
         });
-        for (const button of TipsOptions) {
-            button.addEventListener('click', () => {
-                const TipAmount = button.attributes['value'].value;
-                this.setActive(tipButtonDiv, false);
-                ShowTipToDealer(TipAmount, () => {
-                    $('#TipToDealer').modal('show');
-                });
-            })
-        }
+        // for (const button of TipsOptions) {
+        //     button.addEventListener('click', () => {
+        //         const TipAmount = button.attributes['value'].value;
+        //         this.setActive(tipButtonDiv, false);
+        //         ShowTipToDealer(TipAmount, () => {
+        //             $('#TipToDealer').modal('show');
+        //         });
+        //     })
+        // }
 
         insuranceYesButton.addEventListener('click', () => {
             acceptInsurance(this.insuranceAmount, this.insuranceWinAmount);
@@ -309,13 +313,14 @@ export class MainUI {
     showInsurance(data) {
         console.log(data);
         if (data.status == true) {
-            console.log(data);
             this.insuranceAmount = data.data.insurancePrice;
             this.insuranceWinAmount = data.data.allInPrice;
+            console.log(this.insuranceAmount);
+            console.log(this.insuranceWinAmount);
 
-            insurancePrice.innerHTML = data.data.insurancePrice;
+            insurancePrice.innerHTML = getMoneyText(data.data.insurancePrice);
             for (const price of allInPrice)
-                price.innerHTML = data.data.allInPrice;
+                price.innerHTML = getMoneyText(data.data.allInPrice);
 
             $('#insuranceModal').modal('show');
         } else {
@@ -406,6 +411,71 @@ export class MainUI {
         return true;}
     }
 
+    doAutoFold(autoFoldModeButtonCheckboxes, playerCards, activeSeats) {
+        console.warn(round.state);
+        console.warn(autoFoldModeButtonCheckboxes.checked != true || round.state != "HoleCards" || getPlayerSeat() == -1 || getPlayerSeat() != getCurrentTurn().seat);
+        if (autoFoldModeButtonCheckboxes.checked != true || round.state != "HoleCards" || getPlayerSeat() == -1 || getPlayerSeat() != getCurrentTurn().seat)
+            return false;
+
+        var autoFoldType = "";
+        const activeSeatsCount = activeSeats.length;
+        if (round.seatOfSmallBlind == getPlayerSeat())
+            autoFoldType = "small_blind";
+        else if (round.seatOfBigBlind == getPlayerSeat())
+            autoFoldType = "big_blind";
+        else if (activeSeatsCount >= 5) {
+            const seatOfSmallBlind = round.seatOfSmallBlind;
+
+            if (seatOfSmallBlind == undefined)
+                return false;
+
+            var palyer = getPlayerSeat();
+            var playerPosition = 0;
+            var next = activeSeats.indexOf(seatOfSmallBlind);
+            for (let i = 0; i < activeSeatsCount; i++) {
+                playerPosition++;
+                if (activeSeats[next] == palyer)
+                    break;
+
+                if (activeSeats[next] == activeSeats[activeSeats.length - 1]) {
+                    next = 0;
+                } else {
+                    next++;
+                }
+            }
+
+            var autoFoldTypes = {};
+            if (activeSeatsCount == 5) {
+                autoFoldTypes = { "3": "early_position", "4": "middle_position", "5": "late_position" };
+            } else if (activeSeatsCount == 6) {
+                autoFoldTypes = { "3": "early_position", "4": "middle_position", "5": "middle_position", "6": "late_position" };
+            } else if (activeSeatsCount == 7) {
+                autoFoldTypes = { "3": "early_position", "4": "early_position", "5": "middle_position", "6": "late_position", "7": "late_position" };
+            } else if (activeSeatsCount == 8) {
+                autoFoldTypes = { "3": "early_position", "4": "early_position", "5": "middle_position", "6": "middle_position", "7": "late_position", "8": "late_position" };
+            } else if (activeSeatsCount == 9) {
+                autoFoldTypes = { "3": "early_position", "4": "early_position", "5": "middle_position", "6": "middle_position", "7": "middle_position", "8": "late_position", "9": "late_position" };
+            }
+            autoFoldType = autoFoldTypes[playerPosition];
+            console.warn(`sb: ${seatOfSmallBlind},palyer:${palyer},playerPosition : ${playerPosition}, autoFoldType:${autoFoldType}`);
+        }
+
+        if (autoFoldType == "")
+            return false;
+
+        const playerCardHandGroup = getPlayerCardHandGroup(playerCards);
+        console.warn(`playerCardHandGroup : ${playerCardHandGroup}, autoFoldType : ${autoFoldType}`);
+        console.warn(`playerAutoFoldCards : ${this.playerAutoFoldCards[autoFoldType]}`);
+        if (this.playerAutoFoldCards[autoFoldType] !== undefined) {
+        console.warn(`playerAutoFoldCards : ${this.playerAutoFoldCards[autoFoldType][playerCardHandGroup]}`);
+        if (this.playerAutoFoldCards[autoFoldType] !== undefined && this.playerAutoFoldCards[autoFoldType][playerCardHandGroup] == true) {
+            this.onFoldClick();
+            return true;
+        }}
+
+        return false;
+    }
+
     doAutoCheck() {
         if (!this.optionActionAutoCheck || getPlayerSeat() == -1 || getPlayerSeat() != getCurrentTurn().seat)
             return false;
@@ -460,6 +530,10 @@ export class MainUI {
 
     getPlayerSeat() {
         return this.playerInfo.seat;
+    }
+
+    setPlayerAutoFoldCards(autoFoldCard) {
+        this.playerAutoFoldCards = autoFoldCard;
     }
 
     setPlayerName(newPlayerInfo) {
@@ -597,6 +671,10 @@ export class MainUI {
 
     showWaitForBB(value) {
         this.setActiveElements(waitForBBButtons, value);
+    }
+
+    showAutoFold(value) {
+        this.setActive(autoFoldModeButtonDiv, value);
     }
 
     setWaitForBB(value) {

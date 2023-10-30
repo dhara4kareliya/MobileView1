@@ -1,4 +1,4 @@
-const fourColorsCheckbox = $("#fourColorsCheckbox")[0];
+const fourColorsCheckbox = $("#fourColorsCheckbox1")[0];
 fourColorsCheckbox.addEventListener('change', () => {
     setFourColors(fourColorsCheckbox.checked);
 });
@@ -47,6 +47,27 @@ function getCardImage (cardName) {
     name = name.replace("t","10");
     if (name == "?") name = "back";
     return cardImages[name];
+}
+
+export function getPlayerCardHandGroup(cards) {
+    var values = ["A", "K", "Q", "J", "T", "9", "8", "7", "6", "5", "4", "3", "2"];
+    cards = cards.map(card => {
+        card = card.split("");
+        return { card: card[0], suites: card[1] };
+    });
+
+    cards.sort((a, b) => {
+        return values.indexOf(a.card) > values.indexOf(b.card) ? 1 : -1;
+    });
+
+    var group = cards[0].card + cards[1].card;
+    if (cards[0].card == cards[1].card) {
+        return group;
+    } else if (cards[0].suites == cards[1].suites) {
+        return group + 's';
+    } else {
+        return group + 'o';
+    }
 }
 
 export function getCardImageFilePath (cardName) {

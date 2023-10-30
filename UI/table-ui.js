@@ -203,6 +203,7 @@ export class Table {
             } else {
                 player.showPlayer(true);
                 player.setPlayState(true);
+                player.setTip(getPlayerSeat() > -1)
                 player.setPlayerName(seat.player.name);
                 player.setPlayerMoney(seat.money);
                 player.setPlayerAction(seat.lastAction);
@@ -214,7 +215,7 @@ export class Table {
                     this.PlayerAnimation({ type: "betAction", animation: !checkAction, actionCheck: checkAction, data: { index: lastBetPlayer } });
                     if (seat.state == "Playing") {
                         switch (seat.lastAction) {
-                            case "check":
+                            case "check": 
                                 sound.playCheck();
                                 break;
                             case "call":
@@ -260,6 +261,15 @@ export class Table {
     setSeats(seats, RoundState) {
         this.seats = seats;
         this.arrangeSeats(seats, RoundState);
+    }
+
+    getActiveSeats() {
+        const activeSeate = [];
+        for (let i = 0; i < this.seats.length; ++i) {
+            if (this.seats[i].state == "Playing")
+                activeSeate.push(i);
+        }
+        return activeSeate;
     }
 
     setShowSbBbButtons(value) {
@@ -492,6 +502,10 @@ export class Table {
                 player.clearTurnTimer();
             }
         }
+    }
+
+    getTurnPlayerCards(seat) {
+        return this.seats[seat].cards;
     }
 
     showCards(seat, cards) {
