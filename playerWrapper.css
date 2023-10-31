@@ -29,7 +29,7 @@
 }
 
 .player_wrapper:nth-child(6) {
-  top: calc(187 * var(--aspect-ratio));
+  top: calc(164 * var(--aspect-ratio));
   position: absolute;
   left: calc(37 * var(--aspect-ratio));
   bottom: calc(10 * var(--aspect-ratio));

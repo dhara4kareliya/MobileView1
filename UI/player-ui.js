@@ -147,6 +147,12 @@ function getSortedPlayerWrappers() {
         return +a.classList[1] - +b.classList[1];
     });
 }
+function  tipButtonClickHandler(event) {
+    const TipAmount = event.target.getAttribute('value');
+    ShowTipToDealer(TipAmount, () => {
+        $('#TipToDealer').modal('show');
+    });
+}
 
 export class Player {
     constructor(wrapper, seatIndex) {
@@ -176,20 +182,22 @@ export class Player {
         this.isPlaying = isPlaying;
     }
 
-    setTip(player){
-        if(player){
-            const TipsOptions = $("#tip-button button");
-            const tipButtonDiv = $("#tip-button")[0]
+   
+    
+    setTip(player) {
+        const TipsOptions = document.querySelectorAll("#tip-button button");
+    
+        TipsOptions.forEach(function(button) {
+            button.removeEventListener('click', tipButtonClickHandler);
+        });
+    
+        if (player) {
+            const tipButtonDiv = document.getElementById('tip-button');
             tipButtonDiv.style.visibility = "visible";
-            for (const button of TipsOptions) {
-                button.addEventListener('click', () => {
-                    const TipAmount = button.attributes['value'].value;
-                    // this.setActive(tipButtonDiv, false);
-                    ShowTipToDealer(TipAmount, () => {
-                        $('#TipToDealer').modal('show');
-                    });
-                },{once:true})
-            }
+    
+            TipsOptions.forEach(function(button) {
+                button.addEventListener('click', tipButtonClickHandler);
+            });
         }
     }
 

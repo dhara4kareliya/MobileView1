@@ -199,12 +199,12 @@ function onTableStatus(status) {
         if (previousMainPlayerIndex != -1 && mainPlayerSeat == -1) {
             table.restorePlayerWrappers();
             mainUI.showLeaveGameButton(false);
-            mainUI.showTipDealer(false);
+            // mainUI.showTipDealer(false);
             mainUI.showBackLobbyButton(true);
         } else {
             table.rotatePlayerWrappers(mainPlayerSeat, mainPlayerIndex);
             mainUI.showLeaveGameButton(true);
-            mainUI.showTipDealer(true);
+            // mainUI.showTipDealer(true);
             mainUI.showBackLobbyButton(false);
         }
         previousMainPlayerIndex = mainPlayerSeat;

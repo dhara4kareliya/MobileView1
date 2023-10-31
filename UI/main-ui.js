@@ -54,7 +54,7 @@ const waitList = $(".users")[0];
 const waitListDropdown = $("#usersDropdown")[0];
 const waitListArrow = $("#arrow")[0]
 const logDiv = $('.log_data1')[0];
-const addTipsButtons = $(".addTipsButton")[0];
+// const addTipsButtons = $(".addTipsButton")[0];
 // const TipsOptions = $("#tip-button button");
 const tipButtonDiv = $("#tip-button")[0]
 const chatDiv = $('#divmessage1 .userMessage')[0];
@@ -246,9 +246,6 @@ export class MainUI {
         autoCheckOrFoldCheckbox.addEventListener('change', () => {
             this.onOptionActionAutoCheckOrFold(autoCheckOrFoldCheckbox.checked);
         });
-        addTipsButtons.addEventListener('click', () => {
-            // this.setActive(tipButtonDiv, true);
-        });
         // for (const button of TipsOptions) {
         //     button.addEventListener('click', () => {
         //         const TipAmount = button.attributes['value'].value;
@@ -331,9 +328,9 @@ export class MainUI {
 
     }
 
-    showTipDealer(value) {
-        this.setActive(addTipsButtons, value);
-    }
+    // showTipDealer(value) {
+    //     // this.setActive(addTipsButtons, value);
+    // }
 
     setTrophyInfo(position, number) {
         for (const tropySpan of tropySpans) {
