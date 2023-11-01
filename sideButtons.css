@@ -787,9 +787,11 @@ button:focus{
 
 #tip-button {
     position: absolute;
-    bottom: calc( 80 * var(--aspect-ratio));
+    bottom: calc( 151 * var(--aspect-ratio));
+    /* bottom: calc( 80 * var(--aspect-ratio)); */
     right: calc( 58 * var(--aspect-ratio));
     text-align: center;
+    visibility: hidden;
 }
 
 .tip-icon {

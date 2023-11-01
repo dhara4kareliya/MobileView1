@@ -111,6 +111,18 @@ function onPlayerInfo(playerInfo) {
     mainUI.setPlayerName(playerInfo);
 }
 
+function onSideBet(res) {
+    mainUI.updateSideBetOptions(res.street, res.streetText, res.options);
+}
+
+function onSideBetHistory(res) {
+    mainUI.updateSideBetHistory(res);
+}
+
+function onTableFreeBalance(balance) {
+    mainUI.updateFreeBalance(balance);
+}
+
 function onTableSettings(settings) {
     var usdRate = parseFloat(settings.usdRate).toFixed(2);
     mainUI.setTableName(settings.name);
@@ -433,6 +445,9 @@ tableSubscribe("onCashWaitList", onCashWaitList);
 tableSubscribe("onLog", onLog);
 tableSubscribe("onChat", onChat);
 tableSubscribe("onInsurance", onInsurance);
+tableSubscribe("onSideBet", onSideBet);
+tableSubscribe("onSideBetHistory", onSideBetHistory);
+tableSubscribe("onTableFreeBalance", onTableFreeBalance);
 
 export default {
     showBuyIn,

@@ -191,7 +191,7 @@ export class Player {
             button.removeEventListener('click', tipButtonClickHandler);
         });
     
-        if (player) {
+        if (player === true) {
             const tipButtonDiv = document.getElementById('tip-button');
             tipButtonDiv.style.visibility = "visible";
     

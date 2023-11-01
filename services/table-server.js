@@ -278,6 +278,18 @@ function onTableStatus(status) {
 
 }
 
+function onSideBetOptions(res) {
+    triggerEventListeners("onSideBet", res);
+}
+
+function onSideBetHistory(res) {
+    triggerEventListeners("onSideBetHistory", res);
+}
+
+function onTableFreeBalance(res) {
+    triggerEventListeners("onTableFreeBalance", res);
+}
+
 function onTableSidePots(res) {
     triggerEventListeners("onSidePots", res);
 }
@@ -433,6 +445,9 @@ subscribe("onTourneyInfo", onTourneyInfo);
 subscribe("onCashWaitList", onCashWaitList);
 subscribe("onLog", onLog);
 subscribe("onChat", onChat);
+subscribe("onSideBetOptions", onSideBetOptions);
+subscribe("onSideBetHistory", onSideBetHistory);
+subscribe("onTableFreeBalance", onTableFreeBalance);
 
 
 export async function getOptions() {

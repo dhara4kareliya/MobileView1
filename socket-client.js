@@ -40,6 +40,9 @@ function setSocketEventListeners() {
     socket.on("connect", eventTrigger("onConnect"));
     socket.on("disconnect", eventTrigger("onDisconnect"));
     socket.on("REQ_INSURANC", eventTrigger("onInsurance"));
+    socket.on("REQ_SIDEBET_OPTIONS", eventTrigger("onSideBetOptions"));
+    socket.on("REQ_SIDEBET_HISTORY", eventTrigger("onSideBetHistory"));
+    socket.on("REQ_TABLE_FREE_BALANCE", eventTrigger("onTableFreeBalance"));
 }
 
 // TS -> client
@@ -67,6 +70,9 @@ const eventListeners = {
     onConnect: [],
     onDisconnect: [],
     onInsurance: [],
+    onSideBetOptions: [],
+    onSideBetHistory: [],
+    onTableFreeBalance: [],
 };
 
 function triggerEventListeners(name, data) {
@@ -132,6 +138,14 @@ export function joinToTs(userToken, tsToken) {
             console.error("Failed to join table server. Quiting now.");
         }
     });
+}
+
+export function submitSideBet(bets, street) {
+    socket.emit("REQ_PLAYER_SIDEBET", { sidebets: bets, street },
+        (strResult) => {
+            const result = JSON.parse(strResult);
+            console.log('Side Bet submitted \n', result.sideBet);
+        });
 }
 
 export function joinToTsWithMtData(userEncrypted, tsToken) {

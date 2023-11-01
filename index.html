@@ -353,7 +353,82 @@
       </div>
     </div>
     
-    <!-- <div class="wrapper">
+    <div id="toggleButton" style="display: flex;">
+      <div style=" margin-bottom: calc( 1 * var(--aspect-ratio)); width: 47.5px;"><img src="./images/Group 177671.png" alt="Show Image" class="w-100" /></div>
+  </div>
+  <div class="body-content body_pran" style="display: none;">
+    <div id="body_toge">
+        <div class="fund_prent mb-1">
+            <div class="fund  font">
+                <div class="hudge lang" key="hudgeFundPanel"> Hudge Fund Panel</div>
+                <div><i class="bi bi-question-circle" data-bs-toggle="modal" data-bs-target="#modal-note"></i></div>
+                <div class="troffie" id="open_history"><img src="images/Frame 161.png" alt=""></div>
+            </div>
+        </div>
+        <div class="fund_prent1 mb-1">
+            <div class="fund1 text-center">
+                <button id="button31_q31" class="div_fund1 " style="    width: calc(30 * var(--aspect-ratio)) !important;">
+                    <p class="Balance2" id="free-balance">$200</p>
+                    <p class="Balance lang" key="freeBalance">Free Balance</p>
+                </button>
+                <button id="button32_q31" class="div_fund2">
+                    <p class="Balance2">$200</p>
+                    <p class="Balance lang" key="totalPaid">total paid</p>
+                </button>
+            </div>
+        </div>
+        <div class="street">
+            <p class="text-street lang" key="street">street</p>
+            <div class="img-1"><img src="images/21.png" alt=""></div>
+            <div class="img-2"><img src="images/22.png" alt="" srcset=""></div>
+        </div>
+        <div id="scroll_bar">
+            <div class="start_prents">
+                <div class="scroll_prents">
+                </div>
+            </div>
+            <div class="text-center text_div">
+                <div class="dum">
+                    <div class="dum2">
+                        <p class="text_last_sum" id="total-payout">$0</p>
+                        <p class="text_last_sum2 lang" key="payOut">PAY OUT</p>
+                    </div>
+                </div>
+                <button id="submit-sidebet1" class="last_sum">
+                    <P id="total-amount" class="text_last_sum22"> $0 </P>
+                    <P class="text_last_sum2 lang" key="submit">Submit</P>
+                </button>
+            </div>
+        </div>
+        <div>
+        </div>
+    </div>
+    <div class="" id="body_toge1">
+        <div class="fund_prents mb-1">
+            <div class="fund  fonts">
+                <div class="troffies mx-2"><img src="images/Group 177703.png" id="back_button" alt=""></div>
+                <div class="win_win mt-1 lang" key="winingHistory"> Wining history</div>
+
+            </div>
+        </div>
+        <div class="fund_prents1 mb-1">
+            <div class="bg-imges" style="background-image: url('images/Group\ 177702.png') ; background-size: 100% 100%;">
+                <img src="images/Group 177685.png" class="w-100 winner_image" alt="">
+                <p class="total "><span  key="totalWins" class="lang">Total Wins</span>:<span class="sidebet-total-win"> $0</span> </p>
+            </div>
+        </div>
+        <div id="scroll_bar ">
+            <div class="start_prentss mt-5">
+                <div class="scroll_prentss">
+                </div>
+            </div>
+        </div>
+        <div>
+        </div>
+    </div>
+</div>
+
+    <div class="wrapper">
     <div class="button-section">
 
       <div class="f-btn">
@@ -392,7 +467,7 @@
           </div>
       </div>
   </div>
-  </div> -->
+  </div>
 
     <div id="buyInMenu" class="menuDiv">
       <!-- <div
@@ -1246,5 +1321,57 @@
       </div>
     </div>
   </body>
+  <script>
+    let box = document.querySelector('#uiTable');
+    let box2 = document.querySelector('#tableDiv');
+    document.getElementById("toggleButton").addEventListener("click", function() {
+        var bodyContent = document.querySelector(".body-content");
+        if (bodyContent.style.display === "none") {
+            bodyContent.style.display = "block";
+            box.style.width = '89.3%'; // Corrected the property name to 'width'
+            box2.style.width = '65.3vw'; // Corrected the property name to 'width'
+
+        } else {
+            bodyContent.style.display = "none";
+            box.style.width = '100%'; // Corrected the property name to 'width'
+            box2.style.width = '80vw'; // Corrected the property name to 'width'
+        }
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        let box1 = document.querySelector("#button31_q31");
+        let box22 = document.querySelector("#button32_q31");
+
+        box22.addEventListener('click', () => {
+            box22.style.background = "linear-gradient(-180deg, #827EFC, #2B26DD)";
+            box1.style.background = "#1e2142";
+        });
+
+        box1.addEventListener('click', () => {
+            box22.style.background = "#1e2142";
+            box1.style.background = "linear-gradient(-180deg, #827EFC, #2B26DD)";
+        });
+    });
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+        let historyopen = document.getElementById('open_history');
+        let historynone = document.getElementById('body_toge');
+        let historynone1 = document.getElementById('body_toge1');
+        let historyback = document.getElementById('back_button');
+
+        historyopen.addEventListener('click', function() {
+            historynone.style.display = 'none';
+            historynone1.style.display = 'block';
+        });
+
+        historyback.addEventListener('click', function() {
+            historynone.style.display = 'block';
+            historynone1.style.display = 'none';
+        });
+    });
+</script>
 </html>
 <script type="module" src="/main.js"></script>
+
