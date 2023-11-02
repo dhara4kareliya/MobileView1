@@ -780,7 +780,6 @@ button:focus{
     /* width: 80px;
     height: 40px; */
     border-radius: 260px;
-    background: #84A0D333;
     /* position: relative; */
     display: flex;
 }
@@ -793,7 +792,9 @@ button:focus{
     text-align: center;
     visibility: hidden;
 }
-
+#tip-button p{
+    color: white;
+}
 .tip-icon {
     font-size: 30px;
 }
@@ -809,10 +810,9 @@ button:focus{
 
 .button-prents {
     margin-top: 8px;
-  width: 109px;
+  width: 71px;
   height: 40px;
   border-radius: 260px;
-  background: #84A0D333;
   position: relative;
 }
 

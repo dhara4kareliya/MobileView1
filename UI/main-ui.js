@@ -73,6 +73,7 @@ const insurancePrice = $(".insurancePrice")[0];
 const allInPrice = $(".allInPrice1");
 const autoFoldModeButtonDiv = $(".autoFoldModeButton1")[0];
 const submitButton = $('#submit-sidebet1')[0];
+const submitButton2 = $('#submit-sidebet-2.s-sec');
 const streetsOnSideBet = new Map();
 streetsOnSideBet.set('PreCards', 'Next Cards');
 streetsOnSideBet.set('PreFlop', 'Flop');
@@ -279,10 +280,30 @@ export class MainUI {
                     sidebets.push(button.id);
                 }
             }
+            console.log(sidebets);
+            console.log(this.sidebetStreet);
             submitSideBet(sidebets, this.sidebetStreet);
             this.initSideBetPanel();
         });
-
+        
+        for(const button of submitButton2){
+            console.log(button);
+            button.addEventListener('click', () => {
+                for (const btn of submitButton2) {
+                    btn.classList.remove('selected');
+                }
+                let sidebets = [];
+                button.classList.add('selected');
+                const sidebetId = $('#submit-sidebet-2.selected > div').prop('class');
+                console.log(button);
+                sidebets.push(sidebetId);
+                
+            console.log(sidebets);
+            console.log(this.sidebetStreet);
+                submitSideBet(sidebets, this.sidebetStreet);
+                this.initSideBetPanel();
+            });
+        }
 
         /* openMenuButton.addEventListener('click', () => {
              $(mobileSideBar).addClass("active");
@@ -912,6 +933,19 @@ export class MainUI {
 
         let div = '';
         for (const option of options) {
+            const title = $('.button-section .f-sec h5');
+            for(let titleName of title){
+                titleName.innerText = option.betName;
+            }
+            $('.button-section .f-btn .s-sec > div').eq(0).removeClass().addClass(`${option.betName}-${this.tableInfo.bigBlind * 10}`)
+            $('.button-section .s-btn .s-sec > div').eq(0).removeClass().addClass(`${option.betName}-${this.tableInfo.bigBlind * 20}`)
+            $('.button-section .t-btn .s-sec > div').eq(0).removeClass().addClass(`${option.betName}-${this.tableInfo.bigBlind * 50}`)
+            $('.p-out span')[0].innerText = '$' + (this.tableInfo.bigBlind * 10 * (Number(option.ratio) - 1));
+            $('.p-out span')[1].innerText = '$' + (this.tableInfo.bigBlind * 20 * (Number(option.ratio) - 1));
+            $('.p-out span')[2].innerText = '$' + (this.tableInfo.bigBlind * 50 * (Number(option.ratio) - 1));
+            $('.button-section .f-btn .s-sec .price')[0].innerText = '$' + this.tableInfo.bigBlind * 10;
+            $('.button-section .s-btn .s-sec .price')[0].innerText = '$' + this.tableInfo.bigBlind * 20;
+            $('.button-section .t-btn .s-sec .price')[0].innerText = '$' + this.tableInfo.bigBlind * 50;
             div = div + `<div class="fund_prent mb-1 mt-1">
                             <div class="fund3 ">
                                 <div class="top_prent">

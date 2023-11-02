@@ -2267,11 +2267,16 @@ input {
 }
 
 .f-sec h5 {
-  font-size: 12px;
+  font-size: calc(5*var(--aspect-ratio));
   font-weight: 600;
+  width: calc(36*var(--aspect-ratio));
+  height: 20px !important;
+  overflow: hidden;
   color: #fff;
   font-family: "Fira Sans", sans-serif;
-  margin-top: 4px;
+  margin-top: 5px !important;
+  white-space: nowrap;
+  margin-bottom: 0 !important;
 }
 
 .f-btn .f-sec .p-out {
@@ -2279,17 +2284,20 @@ input {
   border: 1px solid #003fbe;
   border-radius: 20px;
   opacity: 1;
-  width: 80px;
-  height: 30px;
+  width: calc(36*var(--aspect-ratio));
+  height: calc(15*var(--aspect-ratio));
   display: flex;
+  flex-direction: column;
+  justify-content: center !important;
   align-items: center;
 }
 
 .p-out p {
   color: #fff;
-  font-size: 11px;
+  font-size: calc(4.5*var(--aspect-ratio));
   font-weight: 600;
   font-family: "Fira Sans", sans-serif;
+  margin: auto !important;
 }
 
 .p-out p span {
@@ -2299,11 +2307,10 @@ input {
 .s-sec {
   position: relative;
   align-items: center;
-  margin-left: 2px;
 }
 
 .s-sec .price {
-  width: 35px;
+  width: auto;
   height: 40px;
   background: transparent
     linear-gradient(180deg, #00a52c 0%, #007420 50%, #007a22 100%, #02a42f 100%)
@@ -2313,7 +2320,7 @@ input {
   border-radius: 6px;
   opacity: 1;
   color: #fff;
-  font-size: 15px;
+  font-size: 11px;
   font-family: "Heebo", sans-serif;
   font-weight: 600;
 }
@@ -2345,9 +2352,11 @@ input {
   border: 1px solid #003fbe;
   border-radius: 20px;
   opacity: 1;
-  width: 80px;
-  height: 30px;
+  width: calc(36*var(--aspect-ratio));
+  height: calc(15*var(--aspect-ratio));
   display: flex;
+  flex-direction: column;
+  justify-content: center !important;
   align-items: center;
 }
 
@@ -2378,9 +2387,11 @@ input {
   border: 1px solid #003fbe;
   border-radius: 20px;
   opacity: 1;
-  width: 80px;
-  height: 30px;
+  width: calc(36*var(--aspect-ratio));
+  height: calc(15*var(--aspect-ratio));
   display: flex;
+  flex-direction: column;
+  justify-content: center !important;
   align-items: center;
 }
 
@@ -2396,12 +2407,12 @@ input {
 .body_pran {
   position: absolute !important;
   inset: 0px auto auto 0px;
-  top: calc(-7 * var(--aspect-ratio)) !important;
-  left: calc(6.3 * var(--aspect-ratio)) !important;
-  width: calc(32 * var(--aspect-ratio)) !important;
-  height: calc(83 * var(--aspect-ratio)) !important;
-  background-image: url(images/Rectangle\ 3.svg);
-  border: calc(0.2 * var(--aspect-ratio)) solid #424659 !important;
+  top: calc(5 * var(--aspect-ratio)) !important;
+  left: calc(5.3 * var(--aspect-ratio)) !important;
+  width: calc(52 * var(--aspect-ratio)) !important;
+  height: calc(15 * var(--aspect-ratio)) !important;
+  background-image: url('images/Rectangle\ 3.svg');
+  /* border: calc(0.2 * var(--aspect-ratio)) solid #424659 !important; */
 }
 
 .fund_prent {
@@ -2581,7 +2592,7 @@ input {
 }
 .Balance2 {
   font-family: Montserrat;
-  font-size: calc(3 * var(--aspect-ratio));
+  font-size: calc(17 * var(--aspect-ratio));
   font-weight: 600;
   line-height: calc(4 * var(--aspect-ratio));
   letter-spacing: 0em;
@@ -2703,6 +2714,7 @@ input {
   border: none;
   text-align: center;
   width: 50%;
+  margin-top: 75px;
 }
 
 .last_sum:hover {
@@ -2711,13 +2723,13 @@ input {
 .text_last_sum {
   color: #ffeb00;
   font-weight: 500;
-  font-size: calc(1.8 * var(--aspect-ratio)) !important;
+  font-size: calc(24.8 * var(--aspect-ratio)) !important;
   font-family: Montserrat;
 }
 .text_last_sum22 {
   color: #ffeb00;
   font-weight: 500;
-  font-size: calc(1.5 * var(--aspect-ratio)) !important;
+  font-size: calc(24.5 * var(--aspect-ratio)) !important;
   font-family: Montserrat;
 }
 .text_last_sum2 {
