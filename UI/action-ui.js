@@ -157,11 +157,13 @@ export class ActionUI {
         if (call == 0) {
             callButton.innerHTML = "CHECK";
         } else {
-            callButton.innerHTML = `CALL ${getMoneyText(call)}`;
+            const callText = getMoneyText(call);
+            callButton.innerHTML = `CALL ${callText.outerHTML}`;
 
             if (call >= currentChips) {
                 this.hideRaise();
-                callButton.innerHTML = `CALL ${getMoneyText(currentChips)}`;
+                const callText = getMoneyText(call);
+            callButton.innerHTML = `CALL ${callText.outerHTML}`;
             }
         }
     }

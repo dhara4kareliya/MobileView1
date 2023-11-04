@@ -786,14 +786,27 @@ button:focus{
 
 #tip-button {
     position: absolute;
+    display: flex !important;
+    flex-direction: row;
     bottom: calc( 151 * var(--aspect-ratio));
     /* bottom: calc( 80 * var(--aspect-ratio)); */
-    right: calc( 58 * var(--aspect-ratio));
-    text-align: center;
+    right: calc( 53 * var(--aspect-ratio));
+    align-items: center;
     visibility: hidden;
 }
 #tip-button p{
-    color: white;
+    color: rgb(251, 255, 0);
+    font-family: sans-serif;
+    font-weight: 600;
+    font-size: calc(4*var(--aspect-ratio));
+    width: calc(14*var(--aspect-ratio));
+    height: calc(11*var(--aspect-ratio));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #001427;
+    border-radius: 50px;
+    margin-left: 2px !important;
 }
 .tip-icon {
     font-size: 30px;
@@ -809,7 +822,6 @@ button:focus{
 }
 
 .button-prents {
-    margin-top: 8px;
   width: 71px;
   height: 40px;
   border-radius: 260px;
@@ -833,7 +845,7 @@ button:focus{
     letter-spacing: 0em;
     text-align: center;
     COLOR: #625A00;
-    box-shadow: 0px 0.7499999403953552px 1.4999998807907104px 0px #00000080 inset;
+    box-shadow: inset 1px 1px 1px #ffffffd0, 0px .5px 1px #ffffff;
 }
 
 .first_bb1 {
@@ -852,7 +864,7 @@ button:focus{
     letter-spacing: 0em;
     text-align: center;
     COLOR: #625A00;
-    box-shadow: 0px 0.7499999403953552px 1.4999998807907104px 0px #00000080 inset;
+    box-shadow: inset 1px 1px 1px #ffffffd0, 0px .5px 1px #ffffff;
 }
 
 .first_bb2 {
@@ -871,7 +883,7 @@ button:focus{
     letter-spacing: 0em;
     text-align: center;
     COLOR: #625A00;
-    box-shadow: 0px 0.7499999403953552px 1.4999998807907104px 0px #00000080 inset;
+    box-shadow: inset 1px 1px 1px #ffffffd0, 0px .5px 1px #ffffff;
 }
 
 .first_bb img,

@@ -47,19 +47,19 @@ const playerFieldSelectors = {
 const fieldAlternativeActions = {
     lastBet: (element, value) => {
         const span = $(element).find("span")[0];
-        span.innerText = value;
+        span.innerHTML = value;
     },
     lastBetAmount: (element, value) => {
         const span = $(element).find("span")[0];
-        span.innerText = value;
+        span.innerHTML = value;
     },
     prize: (element, value) => {
         const span = $(element).find("span")[0];
-        span.innerText = value;
+        span.innerHTML = value;
     },
     winnerHand: (element, value) => {
         const span = $(element).find("span")[0];
-        span.innerText = value;
+        span.innerHTML = value;
     },
     blind: srcToken,
     avatar: (element, value) => {
@@ -303,7 +303,7 @@ export class Player {
         if (fieldAlternativeActions[fieldName])
             fieldAlternativeActions[fieldName](element, value);
         else
-            element.innerText = value;
+            element.innerHTML = value;
     }
 
     setStars(value) {
@@ -329,7 +329,8 @@ export class Player {
 
     setPlayerMoney(amount) {
         this.money = getMoneyValue(amount);
-        let value = amount ? getMoneyText(amount) : false;
+        const amountText = getMoneyText(amount);
+        let value = amount ? amountText.outerHTML : false;
         this.setWrapperField("money", value);
     }
 
@@ -338,7 +339,8 @@ export class Player {
         let value = false;
 
         if (amount) {
-            value = getMoneyText(amount);
+            const amountText = getMoneyText(amount);
+            value = amountText.outerHTML;
         }
 
         this.setWrapperField("lastBet", value);
@@ -401,7 +403,8 @@ export class Player {
     showPrize(amount) {
         let value = false;
         if (amount) {
-            value = getMoneyText(amount);
+            const amountText = getMoneyText(amount);
+            value = amountText.outerHTML;
         }
         this.setWrapperField("prize", value);
     }

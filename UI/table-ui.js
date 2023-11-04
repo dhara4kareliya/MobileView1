@@ -51,12 +51,14 @@ export class Table {
     }
 
     setTotalPot(amount) {
-        totalPotSpan.innerText = winPotSpan.innerText = getMoneyText(amount)
+        const amountText = getMoneyText(amount);
+        totalPotSpan.innerHTML = winPotSpan.innerText = amountText.outerHTML
         totalPotDiv.style.visibility = "visible";
     }
 
     setStreetPot(amount) {
-        streetPotSpan.innerText = getMoneyText(amount);
+        const amountText = getMoneyText(amount);
+        streetPotSpan.innerHTML = amountText.outerHTML;
         streetPotDiv.style.visibility = "visible";
     }
 

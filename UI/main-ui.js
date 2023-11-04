@@ -287,7 +287,6 @@ export class MainUI {
         });
         
         for(const button of submitButton2){
-            console.log(button);
             button.addEventListener('click', () => {
                 for (const btn of submitButton2) {
                     btn.classList.remove('selected');
@@ -354,9 +353,12 @@ export class MainUI {
             console.log(this.insuranceAmount);
             console.log(this.insuranceWinAmount);
 
-            insurancePrice.innerHTML = getMoneyText(data.data.insurancePrice);
-            for (const price of allInPrice)
-                price.innerHTML = getMoneyText(data.data.allInPrice);
+            const insurancePriceText = getMoneyText(data.data.insurancePrice);
+            insurancePrice.innerHTML =insurancePriceText.outerHTML;
+            for (const price of allInPrice){
+            let allInPriceText = getMoneyText(data.data.allInPrice);
+                price.innerHTML = allInPriceText.outerHTML;
+            }
 
             $('#insuranceModal').modal('show');
         } else {
@@ -595,8 +597,10 @@ export class MainUI {
         this.levelInfo.ante = ante;
 
         if (level != undefined) {
-            smallBlindSpan.innerText = getMoneyText(sb);
-            bigBlindSpan.innerText = getMoneyText(bb);
+            const smallBlindText = getMoneyText(sb);
+            smallBlindSpan.innerHTML = 'hello';
+            const bigBlindText = getMoneyText(bb);
+            bigBlindSpan.innerHTML = bigBlindText.outerHTML;
             anteSpan.innerText = ante;
             levelSpan.innerText = level;
         }
@@ -652,13 +656,15 @@ export class MainUI {
 
     setSmallBlind(smallBlind) {
         this.tableInfo.smallBlind = smallBlind;
-        smallBlindSpan.innerText = getMoneyText(smallBlind);
+        const smallBlindText = getMoneyText(smallBlind);
+        smallBlindSpan.innerHTML = smallBlindText.outerHTML;
         this.setActive(tableSettingSpanDiv, true);
     }
 
     setBigBlind(bigBlind) {
         this.tableInfo.bigBlind = bigBlind;
-        bigBlindSpan.innerText = getMoneyText(bigBlind);
+        const bigBlindText = getMoneyText(bigBlind);
+        bigBlindSpan.innerHTML = bigBlindText.outerHTML;
         this.setActive(tableSettingSpanDiv, true);
     }
 
@@ -927,8 +933,8 @@ export class MainUI {
     updateSideBetOptions(street, streetText, options) {
         this.sidebetStreet = street;
         $(".scroll_prents").find('.fund_prent').remove();
-        $('#submit-sidebet1').find('#total-amount')[0].innerText = '0$';
-        $('#total-payout')[0].innerText = '$0';
+        $('#submit-sidebet1').find('#total-amount')[0].innerText = '0';
+        $('#total-payout')[0].innerText = '0';
         $(".text-street")[0].innerText = streetsOnSideBet.get(streetText);
 
         let div = '';
@@ -940,12 +946,18 @@ export class MainUI {
             $('.button-section .f-btn .s-sec > div').eq(0).removeClass().addClass(`${option.betName}-${this.tableInfo.bigBlind * 10}`)
             $('.button-section .s-btn .s-sec > div').eq(0).removeClass().addClass(`${option.betName}-${this.tableInfo.bigBlind * 20}`)
             $('.button-section .t-btn .s-sec > div').eq(0).removeClass().addClass(`${option.betName}-${this.tableInfo.bigBlind * 50}`)
-            $('.p-out span')[0].innerText = '$' + (this.tableInfo.bigBlind * 10 * (Number(option.ratio) - 1));
-            $('.p-out span')[1].innerText = '$' + (this.tableInfo.bigBlind * 20 * (Number(option.ratio) - 1));
-            $('.p-out span')[2].innerText = '$' + (this.tableInfo.bigBlind * 50 * (Number(option.ratio) - 1));
-            $('.button-section .f-btn .s-sec .price')[0].innerText = '$' + this.tableInfo.bigBlind * 10;
-            $('.button-section .s-btn .s-sec .price')[0].innerText = '$' + this.tableInfo.bigBlind * 20;
-            $('.button-section .t-btn .s-sec .price')[0].innerText = '$' + this.tableInfo.bigBlind * 50;
+            const amount1 = getMoneyText(this.tableInfo.bigBlind * 10 * (Number(option.ratio) - 1));
+            const amount2 = getMoneyText(this.tableInfo.bigBlind * 20 * (Number(option.ratio) - 1));
+            const amount3 = getMoneyText(this.tableInfo.bigBlind * 50 * (Number(option.ratio) - 1));
+            const price1 = getMoneyText(this.tableInfo.bigBlind * 10);
+            const price2 = getMoneyText(this.tableInfo.bigBlind * 20);
+            const price3 = getMoneyText(this.tableInfo.bigBlind * 50);
+            $('.f-btn .p-out span')[0].innerHTML = amount1.outerHTML;
+            $('.s-btn .p-out span')[0].innerHTML = amount2.outerHTML;
+            $('.t-btn .p-out span')[0].innerHTML = amount3.outerHTML;
+            $('.button-section .f-btn .s-sec .price')[0].innerHTML = price1.outerHTML;
+            $('.button-section .s-btn .s-sec .price')[0].innerHTML = price2.outerHTML;
+            $('.button-section .t-btn .s-sec .price')[0].innerHTML = price3.outerHTML;
             div = div + `<div class="fund_prent mb-1 mt-1">
                             <div class="fund3 ">
                                 <div class="top_prent">
