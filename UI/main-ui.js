@@ -287,6 +287,7 @@ export class MainUI {
         });
         
         for(const button of submitButton2){
+            console.log(button);
             button.addEventListener('click', () => {
                 for (const btn of submitButton2) {
                     btn.classList.remove('selected');
@@ -1041,7 +1042,7 @@ export class MainUI {
     }
 
     updateFreeBalance(balance) {
-        $('#free-balance')[0].innerText = `$${balance}`;
+        $('#free-balance')[0].innerHTML = (getMoneyText(balance)).outerHTML;
         this.freeBalance = Number(balance);
     }
 

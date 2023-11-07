@@ -25,7 +25,7 @@
   width: 100%;
   background-repeat: no-repeat;
   background-origin: content-box;
-  height: calc((307 * var(--aspect-height-ratio))) !important;
+  height: 100vh !important;
 }
 .mobile_wrapper table {
   width: 100%;
@@ -543,7 +543,7 @@ body {
   padding-top: calc((30 * var(--aspect-height-ratio)));
   background-position: bottom;
   /* max-height: 80vh; */
-  height: 100%;
+  height: 100vh;
   width: 100%;
   background-repeat: no-repeat;
   background-origin: content-box;
@@ -915,7 +915,7 @@ input {
       width: 100%;
       background-repeat: no-repeat;
       background-origin: content-box;
-      height: calc((330 * var(--aspect-ratio))) !important;
+      height: 100vh !important;
     }
     .player9 {
       top: calc(260 * var(--aspect-ratio)) !important;
@@ -946,7 +946,7 @@ input {
 }
 
 .mobile_wrapper {
-  height: calc(307 * var(--aspect-height-ratio)) !important;
+  height: 100vh !important;
   position: fixed;
 }
 
@@ -983,7 +983,7 @@ input {
 
 @media (max-width: 400px) {
   .mobile_wrapper {
-    height: calc(274 * var(--aspect-height-ratio)) !important;
+    height: 100vh !important;
     position: fixed;
   }
   .bottom_buttons_Wrapper {
@@ -1032,7 +1032,7 @@ input {
     margin: 0 auto;
   }
   .mobile_wrapper {
-    height: calc(363 * var(--aspect-ratio)) !important;
+    height: 100vh !important;
   }
   .betAmountAnimation {
     font-size: calc(7 * var(--aspect-ratio)) !important;
@@ -1054,7 +1054,7 @@ input {
     bottom: calc(10 * var(--aspect-ratio));
   }
   .mobile_wrapper {
-    height: calc(253 * var(--aspect-height-ratio)) !important;
+    height: 100vh !important;
     position: fixed;
   }
 }
@@ -1071,17 +1071,17 @@ input {
     top: calc(204 * var(--aspect-height-ratio)) !important;
   }
   .player_wrapper:nth-child(7) {
-    top: calc(179 * var(--aspect-ratio));
+    top: calc(208 * var(--aspect-ratio));
     position: absolute;
-    left: calc(8 * var(--aspect-ratio));
+    left: calc(3 * var(--aspect-ratio));
   }
   .player_wrapper:nth-child(5) {
-    top: calc(170 * var(--aspect-ratio));
+    top: calc(208 * var(--aspect-ratio));
     position: absolute;
     right: calc(6 * var(--aspect-ratio));
   }
   .cardsImage {
-    padding-top: calc((16 * var(--aspect-ratio))) !important;
+    padding-top: calc((21 * var(--aspect-ratio))) !important;
   }
   .player_wrapper:nth-child(8) {
     top: calc(118 * var(--aspect-ratio));
@@ -1094,7 +1094,7 @@ input {
     right: calc(1 * var(--aspect-ratio));
   }
   .player_wrapper:nth-child(6) {
-    top: calc(153 * var(--aspect-height-ratio));
+    top: calc(189 * var(--aspect-height-ratio));
     position: absolute;
     left: calc(44 * var(--aspect-ratio));
     bottom: calc(10 * var(--aspect-ratio));
@@ -1103,7 +1103,7 @@ input {
 
 @media only screen and (min-width: 289px) and (max-width: 376px) {
   .mobile_wrapper {
-    height: calc(253 * var(--aspect-height-ratio)) !important;
+    height: 100vh !important;
     position: fixed;
   }
   .bottom_buttons_Wrapper {
@@ -1137,7 +1137,7 @@ input {
 
 @media only screen and (device-width: 720px) and (device-height: 1440px) {
   .mobile_wrapper {
-    height: calc(216 * var(--aspect-height-ratio)) !important;
+    height: 100vh !important;
   }
   .player_wrapper:nth-child(5) {
     top: calc(221 * var(--aspect-ratio));
@@ -1151,12 +1151,12 @@ input {
     top: calc(198 * var(--aspect-height-ratio)) !important;
   }
   .player_wrapper:nth-child(7) {
-    top: calc(206 * var(--aspect-ratio));
+    top: calc(170 * var(--aspect-ratio)) !important;
     position: absolute;
     left: calc(8 * var(--aspect-ratio));
   }
   .player_wrapper:nth-child(5) {
-    top: calc(206 * var(--aspect-ratio));
+    top: calc(170 * var(--aspect-ratio)) !important;
     position: absolute;
     right: calc(6 * var(--aspect-ratio));
   }
@@ -1168,7 +1168,7 @@ input {
 @-moz-document url-prefix() {
   @media only screen and (min-width: 289px) and (max-width: 450px) {
     .mobile_wrapper {
-      height: calc(236 * var(--aspect-height-ratio)) !important;
+      height: 100vh !important;
       position: fixed;
     }
     .bottom_buttons_Wrapper {
@@ -1183,7 +1183,7 @@ input {
 @-moz-document url-prefix() {
   @media only screen and (min-device-width: 300px) and (max-device-width: 450px) {
     .mobile_wrapper {
-      height: calc(236 * var(--aspect-height-ratio)) !important;
+      height: 100vh !important;
       position: fixed;
     }
     .bottom_buttons_Wrapper {
@@ -1779,7 +1779,7 @@ input {
   position: absolute;
 }
 .bottom_buttons_Wrapper {
-  top: calc(275 * var(--aspect-ratio)) !important;
+  top: calc(324 * var(--aspect-ratio)) !important;
   /* top: calc(295 * var(--aspect-ratio)) !important; */
   left: 0;
   right: 0;
@@ -1820,8 +1820,10 @@ input {
   border-top: 2px solid #000000;
   opacity: 1;
   color: #ffffff;
-  font-size: calc(8*var(--aspect-ratio)) !important;
+  font-size: calc(7*var(--aspect-ratio)) !important;
   font-weight: 600;
+  justify-content: center !important;
+  align-items: center !important;
 }
 
 .flod_3 {
@@ -1859,7 +1861,7 @@ input {
 }
 .slider_small {
   position: absolute;
-  bottom: calc(16 * var(--aspect-ratio));
+  bottom: calc(-18* var(--aspect-ratio));
   right: calc(4 * var(--aspect-ratio));
 }
 #allInButton {
@@ -2243,7 +2245,7 @@ input {
   /* / margin-left: 10px; / */
   /* / margin-top: 40px; / */
   gap: calc(1*var(--aspect-ratio));
-  bottom: 20%;
+  bottom: -6%;
   left: 0;
 }
 
@@ -2310,7 +2312,7 @@ input {
 }
 
 .s-sec .price {
-  width: calc(22*var(--aspect-ratio)) !important;
+  width: calc(25*var(--aspect-ratio)) !important;
   height: calc(15*var(--aspect-ratio));
   background: transparent
     linear-gradient(180deg, #00a52c 0%, #007420 50%, #007a22 100%, #02a42f 100%)
@@ -2814,6 +2816,8 @@ filter: drop-shadow(2px 365px 173px #15A3F5);
 /* currency */
 .imageFeatures, .imageFeatures1{
   display: inline-block;
+  width: auto !important;
+  margin: 0 !important;
   
 }
 #buyInMenu .imageFeatures1 img,#buyInMenu .imageFeatures img, .imageFeatures img{

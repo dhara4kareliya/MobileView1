@@ -44,7 +44,7 @@
     display: inline-block;
     background: transparent linear-gradient(180deg, #323C59 0%, #4A5571 100%) 0% 0% no-repeat padding-box;
     border-radius: calc(0.4 * var(--aspect-ratio));
-    margin-bottom: calc(-2 * var(--aspect-ratio));
+    margin-bottom: calc(69 * var(--aspect-ratio));
 }
 
 #betDiv table {

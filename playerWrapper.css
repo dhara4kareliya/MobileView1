@@ -467,12 +467,13 @@
       calc(0.5 * var(--aspect-ratio)) calc(1 * var(--aspect-ratio)) #000000b8;
     width: fit-content;
     margin: 0 auto;
-    /* position: relative;
-                top: calc((7 * var(--aspect-ratio))); */
+    position: absolute;
+    top: calc((150 * var(--aspect-ratio)));
     padding: 0px calc((15 * var(--aspect-ratio)));
     border-radius: calc((2 * var(--aspect-ratio)));
     font-weight: 500;
     color: white;
+    margin-top: calc(5*var(--aspect-ratio));
   }
   /* .player9 {
                 left: 157px;
@@ -576,7 +577,7 @@
   opacity: 1;
   left: calc(14 * var(--aspect-ratio)) !important;
   position: absolute;
-  top: calc(300 * var(--aspect-ratio));
+  top: calc(326 * var(--aspect-ratio));
 }
 #backButton img {
   margin-right: calc(1.5 * var(--aspect-ratio));

@@ -534,52 +534,6 @@ button:focus{
     top: calc(60.5 * var(--aspect-ratio))!important;
 }
 
-
-/* .input_div {
-    position: fixed;
-    left: calc(0 * var(--aspect-ratio))!important;
-    top: calc(29.5 * var(--aspect-ratio))!important;
-    background-color: #334060;
-    width: calc(30.3 * var(--aspect-ratio))!important;
-    height: calc(6.8 * var(--aspect-ratio))!important;
-    border-radius: 0px 0px 20px 20px;
-} */
-
-
-/* @-moz-document url-prefix() {
-    .input_div {
-        top: calc(29.5 * var(--aspect-ratio))!important;
-    }
-} */
-
-
-/* #msg {
-    position: fixed;
-    width: calc(28 * var(--aspect-ratio))!important;
-    left: calc(1.2 * var(--aspect-ratio))!important;
-    top: calc(29 * var(--aspect-ratio))!important;
-    padding-left: calc(1.7 * var(--aspect-ratio))!important;
-    padding-right: calc(2.9 * var(--aspect-ratio))!important;
-    padding-top: calc(1.4 * var(--aspect-ratio))!important;
-    padding-bottom: calc(0.9 * var(--aspect-ratio))!important;
-    border-radius: 11px;
-    box-shadow: -2px -8px 26px 0px #00000040;
-    z-index: 10000;
-    background-color: #34446d!important;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.5);
-} */
-
-
-/* @-moz-document url-prefix() {
-    #msg {
-        left: calc(1.2 * var(--aspect-ratio))!important;
-        top: calc(29 * var(--aspect-ratio))!important;
-    }
-} */
-
 .fs {
     font-size: calc(1.9 * var(--aspect-ratio)) !important;
 }
@@ -788,11 +742,11 @@ button:focus{
     position: absolute;
     display: flex !important;
     flex-direction: row;
-    bottom: calc( 151 * var(--aspect-ratio));
-    /* bottom: calc( 80 * var(--aspect-ratio)); */
     right: calc( 53 * var(--aspect-ratio));
     align-items: center;
     visibility: hidden;
+    /* top: 76%; */
+    bottom: 14%;
 }
 #tip-button p{
     color: rgb(251, 255, 0);
